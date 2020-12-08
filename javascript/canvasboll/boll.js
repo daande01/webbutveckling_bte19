@@ -18,7 +18,15 @@ var bollar =[];  // skapar arr   (radie , hastighet , färg, x , y)
 
 for (var i = 0; i < antalbollar; i++) {
   
-  bollar.push({x: Math.floor(Math.random()*w ) ,y:Math.floor(Math.random()*h )  ,r:Math.random()*100  ,c1:Math.random()*255, c2:Math.random()*255 , c3:Math.random()*255  , xv:Math.random()*5 , yv:Math.random()*5 });
+  bollar.push({
+    x: Math.floor(Math.random()*w ) ,
+    y:Math.floor(Math.random()*h )  ,
+    r:Math.random()*100  ,
+    c1:Math.random()*255,
+    c2:Math.random()*255 , 
+    c3:Math.random()*255  ,
+     xv:Math.random()*5 ,
+      yv:Math.random()*5 });
   
 }
 
@@ -28,25 +36,49 @@ for (var i = 0; i < antalbollar; i++) {
 
 
 function update(){
-  //x++;
-  if(y>(h-40)){
+  
+  
+  bollar.forEach((boll, bollar) => {
     
-    ySpeed=ySpeed*-1;
     
-  }else if( y<0+40){
+    boll.yv=boll.yv+g;
     
-    ySpeed=ySpeed*-1;
+    //ySpeed=ySpeed+g;
+    
+    boll.y=boll.y+boll.yv;
+  //  y=y+ySpeed;
+  
+  
+  if(boll.y>(h-boll.r)){
+    
+    boll.yv=boll.yv*-1;
+    boll.y=boll.y-(boll.r/5);
+  
+  
+  
+    //ySpeed=ySpeed*-1;
+    
+  }else if( boll.y<0+boll.r){
+    
+      boll.yv=boll.yv*-1;
+    //ySpeed=ySpeed*-1;
     
     
   }
   
-  ySpeed=ySpeed+g;
+    
+    
+  });
   
-  y=y+ySpeed;
+  
+  
+  
+  
+  
   
 }
 function paint(){
-  update();
+  
   ctx.clearRect(0,0,w,h);
   
   for (var i = 0; i < antalbollar; i++) {
@@ -58,7 +90,7 @@ function paint(){
   ctx.arc(boll.x, boll.y  ,boll.r,0,2*Math.PI); // x,y,r,startvinkel i radianer,slutvinkel i radianer
   ctx.fill();
 }  
-  
+  update();
 }
 
 
