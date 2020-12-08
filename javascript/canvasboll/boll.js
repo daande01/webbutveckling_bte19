@@ -8,14 +8,16 @@ var g=4;
 var canvas =document.getElementById("canvas");
 
 var ctx = canvas.getContext("2d");
-var h=window.innerHeight;
-var w=window.innerWidth;
-canvas.width=w;
-canvas.height=h;
+var h=window.innerHeight;   // skärmens höjd
+var w=window.innerWidth;    // skärmens bredd 
+canvas.width=w;             // sätter bredden på canvasen (rit ytan)
+canvas.height=h;            // sätter höjd på canvasen (rit ytan)     
 
-var antalbollar=10;
+var antalbollar=1000;        
 var bollar =[];  // skapar arr   (radie , hastighet , färg, x , y)
 
+
+/*initsierar bollar (ger start värden till bollar).  */
 for (var i = 0; i < antalbollar; i++) {
   
   bollar.push({
@@ -25,13 +27,10 @@ for (var i = 0; i < antalbollar; i++) {
     c1:Math.random()*255,
     c2:Math.random()*255 , 
     c3:Math.random()*255  ,
-     xv:Math.random()*5 ,
-      yv:Math.random()*5 });
+    xv:Math.random()*5 ,
+    yv:Math.random()*5 });
   
 }
-
-
-
 
 
 
