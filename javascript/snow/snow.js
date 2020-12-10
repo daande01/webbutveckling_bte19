@@ -33,19 +33,20 @@ for (var i = 0; i < antalbollar; i++) {
 }
 
 
-
+var k=0;
 function update(){
   
+  k++;
   
   bollar.forEach((boll, bollar) => {
     
     
     boll.yv=boll.yv+g;  /// ökar hastigheten
-    boll.xv=boll.xv*0.999;
+    boll.xv=boll.xv*0.999*Math.cos(Math.toRadians(k));;
     //ySpeed=ySpeed+g;
     
     boll.y=boll.y+boll.yv; // förflyttar bollens y pos med hjälp av hastigheten i y led
-    boll.x=boll.x+boll.xv;
+    boll.x=
   //  y=y+ySpeed;
   
   
