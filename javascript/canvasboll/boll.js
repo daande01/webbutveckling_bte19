@@ -13,7 +13,7 @@ var w=window.innerWidth;    // skärmens bredd
 canvas.width=w;             // sätter bredden på canvasen (rit ytan)
 canvas.height=h;            // sätter höjd på canvasen (rit ytan)     
 
-var antalbollar=1000;        
+var antalbollar=10;        
 var bollar =[];  // skapar arr   (radie , hastighet , färg, x , y)
 
 
@@ -21,9 +21,9 @@ var bollar =[];  // skapar arr   (radie , hastighet , färg, x , y)
 for (var i = 0; i < antalbollar; i++) {
   
   bollar.push({
-    x: Math.floor(Math.random()*w ) ,
+    x:Math.floor(Math.random()*w ) ,
     y:Math.floor(Math.random()*h )  ,
-    r:Math.random()*100  ,
+    r:Math.random()*50,
     c1:Math.random()*255,
     c2:Math.random()*255 , 
     c3:Math.random()*255  ,
@@ -40,11 +40,12 @@ function update(){
   bollar.forEach((boll, bollar) => {
     
     
-    boll.yv=boll.yv+g;
-    
+    boll.yv=boll.yv+g;  /// ökar hastigheten
+    boll.xv=boll.xv*0.99
     //ySpeed=ySpeed+g;
     
-    boll.y=boll.y+boll.yv;
+    boll.y=boll.y+boll.yv; // förflyttar bollens y pos med hjälp av hastigheten i y led
+    boll.x=bool.x+boll.xv;
   //  y=y+ySpeed;
   
   
@@ -78,22 +79,25 @@ function update(){
 }
 function paint(){
   
-  ctx.clearRect(0,0,w,h);
-  
-  for (var i = 0; i < antalbollar; i++) {
+      ctx.clearRect(0,0,w,h);
+      
+      for (var i = 0; i < antalbollar; i++) {
 
-    var boll= bollar[i];  // plockar ut en array ur arrayen 
-  
-  ctx.fillStyle="rgb("+boll.c1+","+boll.c2+","+boll.c3+", 0.8)";
-  ctx.beginPath();
-  ctx.arc(boll.x, boll.y  ,boll.r,0,2*Math.PI); // x,y,r,startvinkel i radianer,slutvinkel i radianer
-  ctx.fill();
-}  
+        var boll= bollar[i];  // plockar ut en array ur arrayen 
+      
+      ctx.fillStyle="rgb("+boll.c1/2+","+boll.c2/2+","+boll.c3/2+", 0.8)";
+      ctx.beginPath();
+      ctx.arc(boll.x, boll.y  ,boll.r,0,2*Math.PI); // x,y,r,startvinkel i radianer,slutvinkel i radianer
+      ctx.lineWidth = 10;
+      ctx.strokeStyle = "rgb("+boll.c1+","+boll.c2+","+boll.c3+", 0.8)";
+      ctx.stroke() ;
+      ctx.fill();
+    }  
   update();
 }
 
 
+paint();
 
 
-
-setInterval(paint,30);
+//setInterval(paint,30);
