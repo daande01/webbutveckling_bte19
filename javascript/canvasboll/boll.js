@@ -41,15 +41,27 @@ function update(){
     
     
     boll.yv=boll.yv+g;  /// ökar hastigheten
-    boll.xv=boll.xv*0.99
+    boll.xv=boll.xv*0.999;
     //ySpeed=ySpeed+g;
     
     boll.y=boll.y+boll.yv; // förflyttar bollens y pos med hjälp av hastigheten i y led
-    boll.x=bool.x+boll.xv;
+    boll.x=boll.x+boll.xv;
   //  y=y+ySpeed;
   
   
-  if(boll.y>(h-boll.r)){
+  if (boll.x > (w-boll.r)){
+    
+    boll.xv*=-1;
+    
+  }if(boll.x<boll.r){
+    
+        boll.xv*=-1;
+  }
+  
+  
+  
+  
+  if(boll.y>(h-boll.r)){    /// tar hand om nere
     
     boll.yv=boll.yv*-1;
     boll.y=boll.y-(boll.r/5);
@@ -58,7 +70,7 @@ function update(){
   
     //ySpeed=ySpeed*-1;
     
-  }else if( boll.y<0+boll.r){
+  }else if( boll.y<0+boll.r){   // tarhand om uppe
     
       boll.yv=boll.yv*-1;
     //ySpeed=ySpeed*-1;
@@ -97,7 +109,6 @@ function paint(){
 }
 
 
-paint();
 
 
-//setInterval(paint,30);
+setInterval(paint,30);
