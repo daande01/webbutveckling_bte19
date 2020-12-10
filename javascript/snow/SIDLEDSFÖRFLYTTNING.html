@@ -13,16 +13,18 @@ var x=300;
 var i=0;
 var xv= 4;
 
-function paint2(){
-      ctx.clearRect(0,0,1000,1000);
-i++;
-ctx.beginPath();
-xv= 4*Math.cos(i*(Math.PI/180));
 
-x=x+xv;
-console.log(x);
-ctx.arc(x, 75, 50, 0, 2 * Math.PI);
-ctx.stroke();
+function paint2(){
+    ctx.clearRect(0,0,1000,1000);
+    i++;
+    ctx.beginPath();
+
+    xv= 10*Math.cos(i*(Math.PI/180));
+
+    x=x+xv;
+    console.log(x);
+    ctx.arc(x, 75, 50, 0, 2 * Math.PI);
+    ctx.stroke();
 }
 
 setInterval(paint2,30);
