@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+      
+      #window{
+        width:640px;
+        height:430px;
+        border:8px solid pink;
+        z-index:10;
+        overflow:hidden;
+        margin-right:auto;
+        margin-left:auto;
+      }
+      #pictures{
+        position: relative;
+        display:flex;
+          z-index:8;
+        
+        
+      }
+      
+      
+    </style>
+    
+  </head>
+  <body>
+    <div id="window">
+      <div id="pictures">
+    
+        <img src="bilder/bild1.jpg" alt="">
+        <img src="bilder/bild2.jpg" alt="">
+        <img src="bilder/bild3.jpg" alt="">
+        
+      </div>  
+    </div>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    
+    <script>
+      
+    
+      $("#window").click(function(){
+        
+        
+        console.log("test")
+        $('#pictures').animate({
+          'left' : "-=640px"
+        });
+      });
+      
+    </script>
+    
+    
+    
+    
+    
+  </body>
+</html>
+
