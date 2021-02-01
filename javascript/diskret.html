@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style media="screen">
+		
+		button{
+			
+			display:none;
+		}
+		
+	</style>
+	
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js">
+</script>
+<script>
+
+
+
+$(document).ready(function(){
+
+			$("button").show();
+			$("div").hide();
+
+		  $("button").click(function(){
+				 $("#div1").fadeTo(3000,0.4);
+			  $("#div2").fadeTo(3000,0.4,function(){       //calback
+			  			$("#div3").fadeTo("slow",0.7);
+			  });
+
+			  //$(selector).fadeTo(speed,opacity,callback);
+		});
+});
+</script>
+</head>
+
+<body>
+
+<button>Click to fade in boxes</button>
+<br><br>
+<div id="div1" style="width:80px;height:80px;background-color:#121212;"></div><br>
+<div id="div2" style="width:80px;height:80px;background-color:green;"></div><br>
+<div id="div3" style="width:80px;height:80px;background-color:blue;"></div>
+
+</body>
+</html>

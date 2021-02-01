@@ -10,12 +10,23 @@
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
-      
+  /*    
       $("div").click(function(){
         
         $("div").text("hej");
       });
+    */  
       
+      $( "body" ).on( "click", "p", foo );
+      
+      
+      function foo(){
+        $( "body" ).off( "click", "p", foo );
+        console.log("hej");
+        
+        //gör jobbet
+        $( "body" ).on( "click", "p", foo );
+      }
       
     </script>
     
